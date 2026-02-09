@@ -35,7 +35,7 @@
         {% if language == "it" %}Appendice{% else %}Appendix{% endif %} {{ chapter.folder }}
         {% else %}
         {% if language == "it" %}Capitolo{% else %}Chapter{% endif %} {{ chapter.folder }}
-        {% endif %} / <a href="./">{{ chapter.title[language] }}</a>
+        {% endif %} / {{ chapter.title[language] }}
     </div>
     <h1>{{ chapter.folder }}.{{ filename }} {{ chapter.sections[sectionIndex].title[language] }}</h1>
     <hr/>

@@ -1,0 +1,29 @@
+/* static/css/print.css */
+
+/* Metti @page fuori */
+@page {
+  size: A4;
+  margin: 80mm 20mm 25mm 20mm; /* top right bottom left */
+}
+
+@media print {
+  .pagebreak, .print-pagebreak { break-before: page; }
+}
+
+@media print {
+  .print-vspace {
+    height: 15mm;       /* ← il tuo “\vspace{15mm}” */
+    display: block;
+  }
+}
+
+
+
+@media print {
+  .screen-only { display: none !important; }
+  .print-only  { display: block !important; }
+}
+
+@media screen {
+  .print-only { display: none !important; }
+}
