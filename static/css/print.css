@@ -31,6 +31,12 @@
 
 
 
+
+
+
+
+
+
 @media print {
   .print-pageno{
     display: block !important;
@@ -59,3 +65,16 @@
 @media screen {
   .print-pageno { display: none !important; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

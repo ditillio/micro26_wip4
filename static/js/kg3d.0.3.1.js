@@ -68796,48 +68796,51 @@ var KG;
             view.updateDimensions();
         };
         // update dimensions, either when first rendering or when the window is resized
+		// DEBUG_PRINT_FIX_2026
         View.prototype.updateDimensions = function (printing) {
             var view = this;
             printing = !!printing;
             //console.log('printing is ', printing);
             var width = 0, height = 0, displayHeight = 0;
-            if (printing) {
-                width = 600;
-                height = width / view.aspectRatio;
-                displayHeight = height + 20;
-            }
-            else {
-                // read the client width of the enclosing div and calculate the height using the aspectRatio
-                var clientWidth = view.div.node().clientWidth;
-                width = clientWidth - 10;
-                height = width / view.aspectRatio;
-                var sidebarHeight = 0, explanationHeight = 0;
-                // position the sidebar to the right if the screen is wide enough, or below if it isn't
-                if (view.sidebar) {
-                    if (width > view.sidebar.triggerWidth) {
-                        height = height * 77 / 126;
-                        var s_height = void 0;
-                        if (view.explanation) {
-                            s_height = height + view.explanation.rootElement.node().clientHeight + 10;
-                        }
-                        else {
-                            s_height = height;
-                        }
-                        view.sidebar.positionRight(width, s_height);
-                        width = width * 77 / 126; // make width of graph the same width as main Tufte column
-                    }
-                    else {
-                        view.sidebar.positionBelow(width, height);
-                        sidebarHeight = view.sidebar.rootElement.node().clientHeight + 30;
-                    }
-                }
-                // position the explanation below
-                if (view.explanation) {
-                    view.explanation.position(width, height + sidebarHeight + 10);
-                    explanationHeight = view.explanation.rootElement.node().clientHeight + 20;
-                }
-                displayHeight = height + sidebarHeight + explanationHeight + 10;
-            }
+			// read the client width of the enclosing div and calculate the height using the aspectRatio
+			var clientWidth = view.div.node().clientWidth;
+			width = clientWidth - 10;
+
+			// fallback: in print-preview a volte può risultare 0
+			if (width <= 0) {
+			    width = 600;
+			}
+
+			height = width / view.aspectRatio;
+			var sidebarHeight = 0, explanationHeight = 0;
+
+			// position the sidebar to the right if the screen is wide enough, or below if it isn't
+			if (view.sidebar) {
+			    if (width > view.sidebar.triggerWidth) {
+			        height = height * 77 / 126;
+			        var s_height = void 0;
+			        if (view.explanation) {
+			            s_height = height + view.explanation.rootElement.node().clientHeight + 10;
+			        }
+			        else {
+			            s_height = height;
+			        }
+			        view.sidebar.positionRight(width, s_height);
+			        width = width * 77 / 126; // make width of graph the same width as main Tufte column
+			    }
+			    else {
+			        view.sidebar.positionBelow(width, height);
+			        sidebarHeight = view.sidebar.rootElement.node().clientHeight + 30;
+			    }
+			}
+
+			// position the explanation below
+			if (view.explanation) {
+			    view.explanation.position(width, height + sidebarHeight + 10);
+			    explanationHeight = view.explanation.rootElement.node().clientHeight + 20;
+			}
+
+			displayHeight = height + sidebarHeight + explanationHeight + 10;
             view.div.style('height', displayHeight + 'px');
             // set the height of the div
             view.svgContainerDiv.style('width', width);
@@ -71327,5 +71330,6 @@ var KG;
     }
     KG.resetAllParams = resetAllParams;
 })(KG || (KG = {}));
+
 
 
