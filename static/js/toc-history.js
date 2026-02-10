@@ -581,18 +581,21 @@
   if (!frame) return;
 
   function printFrame() {
+    // Se disponibile la stampa con numeri pagina (basata su pagebreak), usala
+    if (window.printWithPageNumbers) {
+      window.printWithPageNumbers(frame);
+      return;
+    }
+
+    // Fallback: comportamento precedente
     try {
-      // stampa il contenuto attuale del frame (stessa origin)
       if (frame.contentWindow) {
         frame.contentWindow.focus();
         frame.contentWindow.print();
         return;
       }
-    } catch (e) {
-      // fallback sotto
-    }
+    } catch (e) {}
 
-    // Fallback estremo: apri l'URL del frame in una nuova finestra e stampa
     try {
       const url = frame.src;
       const w = window.open(url, "_blank", "noopener,noreferrer");

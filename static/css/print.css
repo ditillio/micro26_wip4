@@ -27,3 +27,35 @@
 @media screen {
   .print-only { display: none !important; }
 }
+
+
+
+
+@media print {
+  .print-pageno{
+    display: block !important;
+
+    /* così non "sta a sinistra": occupa tutta la riga e si allinea a destra */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+
+    /* dimensione */
+    font-size: 16pt;
+    color: #555;
+
+    /* posizione: spazio dall'alto e rientro da destra */
+    padding-top: 12mm;
+    padding-right: 12mm;
+
+    /* respiro prima del testo della pagina */
+    margin: 0 0 4mm 0;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+@media screen {
+  .print-pageno { display: none !important; }
+}
