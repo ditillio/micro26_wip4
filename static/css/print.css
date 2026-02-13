@@ -112,11 +112,16 @@
   }
 
   article {
-    width: 1000px !important;   /* usa la stessa width effettiva del tuo layout */
+    width: 950px !important;   /* usa la stessa width effettiva del tuo layout */
     margin: 0 !important;
   }
 
 }
 
+@media print {
+  @supports (-moz-appearance: none) {
+    .print-pageno { padding-right: 16mm !important; }
+  }
+}
 
 
