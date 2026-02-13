@@ -104,5 +104,18 @@
 
 
 
+@media print {
+
+  /* forza Firefox a usare la stessa larghezza del layout screen */
+  body {
+    width: 100% !important;
+  }
+
+  article {
+    width: 1120px !important;   /* usa la stessa width effettiva del tuo layout */
+    margin: 0 auto !important;
+  }
+
+}
 
 
