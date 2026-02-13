@@ -51,8 +51,8 @@
     color: #555;
 
     /* posizione: spazio dall'alto e rientro da destra */
-    padding-top: 12mm;
-    padding-right: 12mm;
+    padding-top: 8mm;
+    padding-right: 16mm !important;
 
     /* respiro prima del testo della pagina */
     margin: 0 0 4mm 0;
@@ -118,10 +118,5 @@
 
 }
 
-@media print {
-  @supports (-moz-appearance: none) {
-    .print-pageno { padding-right: 16mm !important; }
-  }
-}
 
 
