@@ -112,7 +112,7 @@
   }
 
   article {
-    width: 1120px !important;   /* usa la stessa width effettiva del tuo layout */
+    width: 1000px !important;   /* usa la stessa width effettiva del tuo layout */
     margin: 0 auto !important;
   }
 
