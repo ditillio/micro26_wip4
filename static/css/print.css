@@ -157,3 +157,28 @@
 
 
 
+@media print {
+  /* Interlinea testo più stretta in stampa */
+  article p,
+  article ul,
+  article ol,
+  article blockquote,
+  article dl,
+  article li {
+    line-height: 1.2 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
