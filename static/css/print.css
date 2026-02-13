@@ -113,9 +113,10 @@
 
   article {
     width: 1000px !important;   /* usa la stessa width effettiva del tuo layout */
-    margin: 0 auto !important;
+    margin: 0 !important;
   }
 
 }
+
 
 
